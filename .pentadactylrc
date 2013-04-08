@@ -23,7 +23,7 @@ set hintkeys=asdfhjkl;weroiu
 map , <Leader>
 
 cd ~
-colorscheme vimium
+colorscheme zenburn
 
 set nextpattern='\bComplete Story\b','\bnastępna\b','\bnext\b',^>$,'^(>>|»)$','^(>|»)','(>|»)$','\bmore\b'
 
@@ -103,11 +103,4 @@ nmap -group=redmine <Leader>1 :open http://redmine.gnb.pl/projects/frontend/issu
 nmap -group=redmine <Leader>2 :open http://redmine.gnb.pl/projects/frontend/issues?query_id=219<CR>
 nmap -group=redmine <Leader>3 :open http://redmine.gnb.pl/projects/frontend/issues?query_id=232<CR>
 
-nmap <Leader>n :js $("#dalej img").click();<CR>
-nmap <Leader>p :js $("#wstecz img").click();<CR>
-nmap <Leader>a :js $("#button_a").click();<CR>
-nmap <Leader>b :js $("#button_b").click();<CR>
-nmap <Leader>c :js $("#button_c").click();<CR>
-
 " }}
-"
