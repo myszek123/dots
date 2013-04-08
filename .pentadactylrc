@@ -1,0 +1,113 @@
+"" 
+"" Pentadactyl settings 
+"" vim: ft=vim:
+"" 
+"" ###############################################
+""
+"" compiled with
+"" https://github.com/gorm/dotfiles/blob/f58e8ba0405d124d1eb0809500a702f54df3869c/.pentadactylrc
+""
+""so ~/_pentadactyl/.pentadactylrc-sensitive
+""so ~/_pentadactyl/stylesheets/user.css
+so ~/.pentadactyl/commands.penta
+nmap <Leader>2 :so ~/.pentadactylrc<CR>
+set editor='gvim -f +<line> +"sil! call cursor(0, <column>)" <file>'
+" @section Options {{
+" ******************************************************************************
+set guioptions+=nB
+set visualbell
+set newtab=all
+set maxitems=12
+set cpt=l
+set hintkeys=asdfhjkl;weroiu
+map , <Leader>
+
+cd ~
+colorscheme vimium
+
+set nextpattern='\bComplete Story\b','\bnastępna\b','\bnext\b',^>$,'^(>>|»)$','^(>|»)','(>|»)$','\bmore\b'
+
+" }}
+
+" @section Passkeys {{
+" ******************************************************************************
+set passkeys=
+
+" google aps
+set passkeys+=mail.google.com/:jkg
+set passkeys+=www\.google\.com/reader/.*:inpmsSjko091vwfW<space>
+set passkeys+=www.google.com/calendar:jkgt12345qrcnp
+
+" }}
+"
+" @section Mappings {{
+" ******************************************************************************
+
+nmap <Leader>u :undo<Space>
+nmap J :tabprevious<CR>
+nmap K :tabnext<CR>
+nmap j 3<Down>
+nmap k 3<Up>
+
+" Disable some Pentadactyl default mappings
+nmap d <Nop>
+nmap a <Nop>
+nmap w <Nop>
+
+" Disable some regular-Firefox old habits
+nmap <M-F12> <Nop>
+nmap <M-t> <Nop>
+nmap <M-e> <Nop>
+nmap <M-b> <Nop>
+nmap <M-S-h> <Nop>
+nmap <M-k> <Nop>
+nmap <M-f> <Nop>
+nmap <M-g> <Nop>
+nmap <M-l> <Nop>
+nmap <M-Q> <Nop>
+
+nmap -builtin <Leader>F :set fullscreen!<CR>
+au fullscreen on set go-=s
+au fullscreen off set go+=s
+
+:qmark m https://mail.google.com
+:qmark r https://www.google.com/reader
+:qmark t http://translate.google.com/
+
+" }}
+"
+" @section other {{
+" ******************************************************************************
+nmap <Leader>. :open imacros://run/?m=%23Current.iim<CR>
+
+nmap <Leader>im :sidebar iOpus iMacros<CR>
+
+" Salki
+nmap <Leader>sa :open imacros://run/?m=RM%2FZnajdzSalke.iim<CR>
+nmap <Leader>sr :open imacros://run/?m=RM%2FRezerwujSalke.iim<CR>
+
+:group redmine -l=redmine.gnb.pl 
+nmap -group=redmine <Leader>rr :js var authorid = $('p.author a').attr("href").replace('http://redmine.gnb.pl/users/', '');$("div.contextual a.icon-edit").click();$('#issue_assigned_to_id').val(authorid); $('#notes').val("Proszę o retesty"); $('#issue_status_id').val(4);$('#issue-form').submit();<CR>
+nmap -group=redmine <Leader>rx :js $("div.contextual a.icon-edit").click();$("#issue_status_id").val(5);$('#issue-form').submit();<CR>
+nmap -group=redmine <Leader>rb :js $("div.contextual a.icon-edit").click();$("#issue_tracker_id").val(1);$('#issue-form').submit();<CR>
+nmap -group=redmine <Leader>rc :js $("div.contextual a.icon-edit").click();$("#issue_fixed_version_id").val(354);$('#issue-form').submit();<CR>
+nmap -group=redmine <Leader>rn :js $("div.contextual a.icon-edit").click();$("#issue_fixed_version_id").val(313);$('#issue-form').submit();<CR>
+nmap -group=redmine <Leader>rw :js $("div.contextual a.icon-edit").click();$("#issue_status_id").val(4);$('#notes').val("Co z tym zgoszeniem"); $('#issue-form').submit();<CR>
+nmap -group=redmine <Leader>ro :js $("td.subject a").click({ ctrlKey: true });<CR>
+
+nmap -group=redmine <Leader>hh :js $("table.issues tr").each( function() { if( $(this).find('img[src*="feed"]').length > 0 ) { $(this).find('a[href*="issue"]').click({ ctrlKey: true }) } });<CR>
+
+nmap -group=redmine <Leader>rf :open imacros://run/?m=RM%2FRestestToFile.iim<CR>
+
+nmap -group=redmine <Leader>1 :open http://redmine.gnb.pl/projects/frontend/issues?query_id=185<CR>
+nmap -group=redmine <Leader>2 :open http://redmine.gnb.pl/projects/frontend/issues?query_id=219<CR>
+nmap -group=redmine <Leader>3 :open http://redmine.gnb.pl/projects/frontend/issues?query_id=232<CR>
+
+nmap <Leader>n :js $("#dalej img").click();<CR>
+nmap <Leader>p :js $("#wstecz img").click();<CR>
+nmap <Leader>a :js $("#button_a").click();<CR>
+nmap <Leader>b :js $("#button_b").click();<CR>
+nmap <Leader>c :js $("#button_c").click();<CR>
+
+" }}
+"
