@@ -73,3 +73,8 @@ file{"${home}.pentadactyl":
   ensure => 'link',
   target => "${source}.pentadactyl",
 }
+
+file{"${home}.tmux.conf":
+  ensure => 'link',
+  target => "${source}.tmux.conf",
+}
