@@ -1,5 +1,5 @@
 #source https://github.com/mreishus/personal-puppet/blob/master/modules/mr_puppet/manifests/tmux.pp
-class tmux {
+class common::tmux {
 
     file { "/usr/local/src": 
         ensure => directory
@@ -10,6 +10,12 @@ class tmux {
     package { "libncurses5-dev":
         ensure => present,
     }
+
+  file{"${home}/.tmux.conf":
+    ensure => 'file',
+    owner  => $user,
+    source => 'puppet:///modules/common/.tmux.conf',
+  }
 
     exec { "download_untar_tmux":
         cwd => "/usr/local/src",

@@ -16,18 +16,36 @@ class workstation {
   }
 
   vcsrepo { "${home}/projects/github/pgbadger":
-    ensure => present,
+    ensure   => present,
     provider => git,
-    source => 'git@github.com:dalibo/pgbadger.git',
+    source   => 'git@github.com:dalibo/pgbadger.git',
   }
 
   file{"${home}.pentadactylrc":
-    ensure => 'link',
-    target => "${source}.pentadactylrc",
+    ensure => 'file',
+    source => 'puppet:///modules/workstation/.pentadactylrc',
   }
 
   file{"${home}.pentadactyl":
-    ensure => 'link',
-    target => "${source}.pentadactyl",
+    ensure  => 'directory',
+    source  => 'puppet:///modules/workstation/.pentadactyl',
+    recurse => true,
   }
+
+  file{"${home}/.xmonad":
+    ensure => 'directory',
+  }
+
+  file{"${home}/.xmonad/xmonad.hs":
+    ensure => 'file',
+    source => 'puppet:///modules/workstation/xmonad.hs',
+  }
+
+  File["${home}/.xmonad"] -> File["${home}/.xmonad/xmonad.hs"]
+
+  # this is done as a sort of interesting excercise
+  # here is how to install firefox plugin 'manually ' http://askubuntu.com/questions/73474/how-to-install-firefox-addon-from-command-line-in-scripts
+  # and below is fairly simple way to do it (but probably this will not work with all available plugins.. )
+  # mv extensions.xpi /usr/share/mozilla/extensions/`unzip -c extensions.xpi install.rdf | egrep "em:id.*{" | sed 's/.*\({.*}\).*/\1/' | head -1`.xpi
+  # this needs to be tested
 }

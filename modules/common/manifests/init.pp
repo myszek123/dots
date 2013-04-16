@@ -16,8 +16,6 @@ class common {
 
   Exec["apt-fast"] -> Package["apt-fast"]
 
-  file{"${home}/.tmux.conf":
-    ensure  => 'file',
-    content => 'puppet://common/.tmux.conf',
-  }
+  include common::tmux 
+
 }
