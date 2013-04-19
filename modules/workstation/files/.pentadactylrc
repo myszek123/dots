@@ -104,3 +104,58 @@ nmap -group=redmine <Leader>2 :open http://redmine.gnb.pl/projects/frontend/issu
 nmap -group=redmine <Leader>3 :open http://redmine.gnb.pl/projects/frontend/issues?query_id=232<CR>
 
 " }}
+
+
+"" do zweryfikowania jak sie sprawdzaja
+    set! browser.tabs.closeButtons=2
+    set! browser.tabs.closeWindowWithLastTab=false
+    nmap -builtin <BS> H
+
+map -builtin cl :tabmove! +1<CR>
+map -builtin ch :tabmove! -1<CR>
+
+map -builtin <C-Q>	:help<CR>
+
+
+" open addons manager
+nmap -builtin <Leader>a :dialog addons<CR>
+
+"" rehash
+nmap -builtin <Leader>R :rehash<CR>
+
+"" private mode
+nmap -builtin <Leader>P :set private!<CR>
+
+"" open preferences dialog
+nmap -builtin <Leader>p :dialog preferences<CR>
+
+"" display download
+nmap -builtin <Leader>d :dialog downloads<CR>
+
+"" about:config
+nmap -builtin <Leader>c :tabopen about:config<CR>
+
+"" display calendar
+command cal -js dactyl.echo(<datepicker type="grid" xmlns={XUL}/>)
+
+"" google translate
+command trans -js <<EOF
+var getParameterByName = function(url, name) {
+    var name = name.replace(/[\[]/, '\\\[').replace(/[\]]/, '\\\]');
+    var regexS = '[\\?&]' + name + '=([^&#]*)';
+    var regex = new RegExp(regexS);
+    var results = regex.exec(url);
+    if (results == null)
+        return '';
+    else
+        return decodeURIComponent(results[1].replace(/\+/g, ' '));
+}
+if (buffer.URL.spec.indexOf('http://translate.google.com/') !==0) {
+    dactyl.open('http://translate.google.com/translate?hl=en&sl=auto&tl=en&u=' + encodeURIComponent(buffer.URL.spec));
+} else {
+    dactyl.open(getParameterByName(buffer.URL.spec, 'u'));
+}
+EOF
+nmap -builtin <Leader>t :trans<CR>
+
+autocmd! PageLoad '^http://.*\.?dropbox\.com' -js window.content.location.href=window.content.location.href.replace(/^http:/i, "https:");

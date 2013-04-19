@@ -43,6 +43,11 @@ class workstation {
 
   File["${home}/.xmonad"] -> File["${home}/.xmonad/xmonad.hs"]
 
+  # font for terminal
+  # wget http://www.levien.com/type/myfonts/Inconsolata.otf ~/.fonts/
+  # gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/font "Inconsolata Medium 10"
+
+
   # this is done as a sort of interesting excercise
   # here is how to install firefox plugin 'manually ' http://askubuntu.com/questions/73474/how-to-install-firefox-addon-from-command-line-in-scripts
   # and below is fairly simple way to do it (but probably this will not work with all available plugins.. )

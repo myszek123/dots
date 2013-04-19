@@ -14,6 +14,11 @@ class common {
     unless  => "dpkg-query -l apt-fast"
   }
 
+  file{"${home}.psqlrc":
+    ensure => 'file',
+    source => 'puppet:///modules/common/.psqlrc',
+  }
+
   Exec["apt-fast"] -> Package["apt-fast"]
 
   include common::tmux 

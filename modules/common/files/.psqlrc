@@ -1,0 +1,9 @@
+\timing
+\pset pager always
+\pset border 2
+\pset format wrapped
+\pset linestyle unicode
+\set PROMPT1 '%[%033[33;1m%]%x%[%033[0m%]%[%033[1m%]%/%[%033[0m%]%R%# '
+\set ea 'EXPLAIN ANALYZE '
+-- odpalic sobie w innym oknie vim --servername PSQL i \e odpalać się będzie wlasnie tam, wypas (jakby jeszcze mieć do tego tmuxa!!)
+--export EDITOR="vim --servername PSQL --remote-tab-wait"
