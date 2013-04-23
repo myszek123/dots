@@ -2,7 +2,8 @@ class common {
   package{["colordiff","curl","rake","rubygems","git-core","tig","subversion","subversion-tools","htop","exuberant-ctags","ack-grep","wget","build-essential","apt-fast"]:
     ensure	=> present
   }
-
+  #usefull for new tmux config (fox x env)
+  #urlview urxvtc(rxvt-unicode)
   exec { 'divert ack':
     command => "dpkg-divert --local --divert /usr/bin/ack --rename --add /usr/bin/ack-grep",
     creates => "/usr/bin/ack",
