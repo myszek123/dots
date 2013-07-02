@@ -93,7 +93,7 @@ nmap -group=redmine <Leader>rb :js $("div.contextual a.icon-edit").click();$("#i
 nmap -group=redmine <Leader>rc :js $("div.contextual a.icon-edit").click();$("#issue_fixed_version_id").val(354);$('#issue-form').submit();<CR>
 nmap -group=redmine <Leader>rn :js $("div.contextual a.icon-edit").click();$("#issue_fixed_version_id").val(313);$('#issue-form').submit();<CR>
 nmap -group=redmine <Leader>rw :js $("div.contextual a.icon-edit").click();$("#issue_status_id").val(4);$('#notes').val("Co z tym zgoszeniem"); $('#issue-form').submit();<CR>
-nmap -group=redmine <Leader>ro :js $("td.subject a").click({ ctrlKey: true });<CR>
+""nmap -group=redmine <Leader>ro :js $("td.subject a").click({ ctrlKey: true });<CR>
 
 nmap -group=redmine <Leader>hh :js $("table.issues tr").each( function() { if( $(this).find('img[src*="feed"]').length > 0 ) { $(this).find('a[href*="issue"]').click({ ctrlKey: true }) } });<CR>
 
@@ -159,3 +159,7 @@ EOF
 nmap -builtin <Leader>t :trans<CR>
 
 autocmd! PageLoad '^http://.*\.?dropbox\.com' -js window.content.location.href=window.content.location.href.replace(/^http:/i, "https:");
+
+:group jira -l=xstream.atlassian.net/
+""nmap -group=jira <Leader>ro :js $('#ghx-backlog').find('.ghx-sprint-active').find('.ghx-key a').each(function(){ window.open(this.href); })<CR>
+nmap -group=jira <Leader>ro :js $('#ghx-backlog').find('.ghx-sprint-active').find('.ghx-key a').each(function() { dactyl.execute( ":tabopen "+$(this).attr('href')) });<CR>
