@@ -43,6 +43,9 @@ class workstation {
 
   File["${home}/.xmonad"] -> File["${home}/.xmonad/xmonad.hs"]
 
+  # because of xmonad i need haskell so it would be nice to have haskell suppot in vim 
+  # because of that, in spf13 haskell group installs things that requie to install hdevtools and addional setup handled in the dots repo
+
   # font for terminal
   # wget http://www.levien.com/type/myfonts/Inconsolata.otf ~/.fonts/
   # gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/font "Inconsolata Medium 10"
