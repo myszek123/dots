@@ -1,5 +1,5 @@
 class workstation {
-  package{["xmonad","xsel","gnome-do","gnome-do-plugins","gnome-panel","parcellite","vlc","firefox","vim-gnome","xvfb"]:
+  package{["xmonad","xsel","gnome-do","gnome-do-plugins","gnome-panel","parcellite","vlc","firefox","vim-gnome","xvfb","python-rbtools"]:
     ensure	=> present
   }
 
